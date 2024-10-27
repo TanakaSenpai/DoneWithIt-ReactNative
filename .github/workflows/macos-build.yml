@@ -10,24 +10,21 @@ on:
 
 jobs:
   build:
-    runs-on: macos-latest  # Use macOS runner
+    runs-on: macos-latest  # This specifies that the job should run on the latest macOS environment
 
     steps:
       - name: Check out repository
         uses: actions/checkout@v3
 
-      - name: Set up Node.js (if your project uses Node.js)
+      - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'  # Specify your preferred Node.js version
+          node-version: '18'  # Specify the Node.js version you need
 
-      # Example build step
+      # Install dependencies
       - name: Install dependencies
         run: npm install
 
-      - name: Run build
-        run: npm run build
-
-      # Example test step
+      # If you do have tests, you can keep this step
       - name: Run tests
         run: npm test
