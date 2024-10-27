@@ -1,0 +1,33 @@
+name: macOS Build and Test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: macos-latest  # Use macOS runner
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js (if your project uses Node.js)
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'  # Specify your preferred Node.js version
+
+      # Example build step
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run build
+        run: npm run build
+
+      # Example test step
+      - name: Run tests
+        run: npm test
